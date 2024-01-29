@@ -10,6 +10,14 @@ export type FlandersQuizApi = {
     index: number;
 };
 
+export type TFlandersQuiz = {
+    question: string;
+    timeLimitMs: number;
+    answers: FlandersAnswer[];
+    page: number;
+    isCompleted: boolean;
+};
+
 export class FlandersQuiz {
     private _question!: string;
     private _timeLimitMs: number = 0;

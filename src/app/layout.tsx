@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en' className={cn(FlandersArtSans.variable, 'font-sans')}>
-            <body>
+            <body suppressHydrationWarning={true} className='h-screen'>
                 <Providers>{children}</Providers>
             </body>
         </html>

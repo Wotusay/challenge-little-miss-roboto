@@ -4,7 +4,7 @@ import { NextUIProvider } from '@nextui-org/react';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
     return (
-        <NextUIProvider>
+        <NextUIProvider className='h-full'>
             <h1 className='hidden'>VDAB</h1>
             {children}
         </NextUIProvider>

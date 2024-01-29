@@ -2,7 +2,7 @@ interface IconProps {
     className?: string;
 }
 
-const constantClass = 'max-w-[24px] max-h-[24px] w-[24px] h-[24px]';
+const constantClass = 'aspect-square p-3';
 const svgClass = 'w-full h-full';
 
 export function ArrowRotateRight({ className = constantClass }: IconProps) {

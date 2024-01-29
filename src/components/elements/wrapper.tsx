@@ -10,6 +10,6 @@ export default function Wrapper({
     className?: string;
 }) {
     return (
-        <div className={cn('bg-overlay w-full h-full p-4 rounded-md', className)}>{children}</div>
+        <div className={cn('bg-overlay w-full h-full p-4 rounded-lg', className)}>{children}</div>
     );
 }
