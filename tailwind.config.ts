@@ -63,6 +63,7 @@ const config: Config = {
                         },
                         success: '#38CF1F',
                         danger: '#CF1F1F',
+                        warning: '#FFE200',
                     },
                 },
             },

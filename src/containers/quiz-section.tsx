@@ -1,15 +1,17 @@
 'use client';
 
-import { Button } from '@nextui-org/button';
+import { Confetti } from '@neoconfetti/react';
+
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
+import QuizButtons from '@/components/core/quiz-buttons';
 import CheckboxButton from '@/components/elements/checkbox-button';
 import Wrapper from '@/components/elements/wrapper';
 import { TFlandersQuiz } from '@/interfaces/flanders-quiz.entity';
-import { cn } from '@/utils';
+import { QuizSubmit } from '@/interfaces/quiz-submit.interface';
 
 export default function QuizSection({
     currentQuiz,
@@ -18,18 +20,17 @@ export default function QuizSection({
     currentQuiz: TFlandersQuiz;
     pageLength: number;
 }) {
-    const [isSubmitted, setIsSubmitted] = useState<{ allCorrect: boolean; submitted: boolean }>({
+    const [isSubmitted, setIsSubmitted] = useState<QuizSubmit>({
         allCorrect: false,
         submitted: false,
     });
-    const router = useRouter();
-
     const [beenPicked, setBeenPicked] = useState<string[]>([]);
 
+    const router = useRouter();
     const { control, handleSubmit, watch, setValue } = useForm();
-    // filter the correct answer
-    const correctAnswer = currentQuiz.answers.filter((quiz) => quiz.correct === true);
     const watchAllFields = watch();
+
+    const correctAnswer = currentQuiz.answers.filter((quiz) => quiz.correct === true);
     // watchAllFields is an object with name as key => { name: boolean }
     // If 3 checkboxes are true set an single boolean to true
     const watchAllFieldsValues = Object.values(watchAllFields);
@@ -84,7 +85,7 @@ export default function QuizSection({
 
     return (
         <>
-            <Wrapper>
+            <Wrapper className='relative'>
                 <form className='h-full w-full' onSubmit={handleSubmit(onSubmit)}>
                     <section className='bg-cards text-white rounded-lg h-full grid grid-rows-[auto_auto_auto_200px] justify-center flex-col w-full justify-items-center text-center gap-8 p-10'>
                         <div>Progress</div>
@@ -107,48 +108,21 @@ export default function QuizSection({
                                 />
                             ))}
                         </div>
-                        <div>
-                            <div
-                                className={cn(
-                                    isSubmitted.allCorrect ? 'hidden' : 'flex',
-                                    'flex-col gap-4 self-center justify-self-center w-[400px]',
-                                )}>
-                                <Button
-                                    type='submit'
-                                    className='shadow-inset-black-25 font-bold'
-                                    size='lg'
-                                    radius='sm'
-                                    color={
-                                        !watchAllFieldsValuesLengthIsTrue ? 'secondary' : 'primary'
-                                    }
-                                    isDisabled={!watchAllFieldsValuesLengthIsTrue}
-                                    variant='solid'>
-                                    Klaar!
-                                </Button>
-                                <Button
-                                    className='shadow-inset-black-25 font-bold'
-                                    size='lg'
-                                    radius='sm'
-                                    color='secondary'
-                                    variant='solid'>
-                                    Geef me een tip...
-                                </Button>
-                            </div>
-                            <Button
-                                size='lg'
-                                radius='sm'
-                                color='primary'
-                                variant='solid'
-                                onClick={proceed}
-                                className={cn(
-                                    isSubmitted.allCorrect ? 'flex' : 'hidden',
-                                    'font-bold shadow-inset-black-25 w-[400px]',
-                                )}>
-                                Doorgaan
-                            </Button>
-                        </div>
+                        <QuizButtons
+                            proceed={proceed}
+                            isSubmitted={isSubmitted}
+                            watchAllFieldsValuesLengthIsTrue={watchAllFieldsValuesLengthIsTrue}
+                        />
                     </section>
                 </form>
+                {isSubmitted.allCorrect && (
+                    <div className='w-full h-full absolute inset-0 flex justify-center pointer-events-none'>
+                        <Confetti
+                            stageHeight={1000}
+                            colors={['#FFE200', '#B0E1F3', '#0C6AAE', '#FFFFFF']}
+                        />
+                    </div>
+                )}
             </Wrapper>
         </>
     );
