@@ -8,8 +8,9 @@ export type CheckboxButtonProps = {
     isCorrect: boolean;
     isSubmitted: boolean;
     beenPicked: boolean;
-    disabled?: boolean;
     allCorrect: boolean;
+
+    disabled?: boolean;
     control?: Control<FieldValues, any>;
 };
 
@@ -23,11 +24,6 @@ export default function CheckboxButton({
     disabled = false,
 }: CheckboxButtonProps) {
     const isCorrectAnswer = isCorrect && isSubmitted && beenPicked;
-
-    if (beenPicked) {
-        console.log(isCorrectAnswer);
-        console.info(isCorrect, isSubmitted, beenPicked);
-    }
     const wrongAnswer = !isCorrect && beenPicked && isSubmitted;
 
     const classesForStates = isCorrectAnswer
@@ -41,7 +37,6 @@ export default function CheckboxButton({
             <Controller
                 name={label}
                 control={control}
-                defaultValue={false}
                 disabled={allCorrect || wrongAnswer || disabled}
                 render={({ field }) => (
                     <input

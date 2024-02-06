@@ -21,6 +21,7 @@ const config: Config = {
             },
             boxShadow: {
                 'inset-black-25': '0px -3px 0px 0px rgba(0, 0, 0, 0.25) inset',
+                'inset-blue': '0px -3px 0px 0px rgba(0, 68, 117, 1.00) inset',
             },
             backgroundColor: {
                 'avatar-blue': '#B0E1F3',

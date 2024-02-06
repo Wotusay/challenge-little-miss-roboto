@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { Stopwatch } from '../icons/icons';
+
 export default function Timer({
     timeInMs,
     className,
@@ -21,20 +23,28 @@ export default function Timer({
     };
 
     useEffect(() => {
-        if (!isRunning) return;
+        let interval: any = null;
 
-        const interval = setInterval(() => {
-            setTime((prevTime) => prevTime - 1000);
-        }, 1000);
+        if (isRunning) {
+            interval = setInterval(() => {
+                setTime((prevTime) => prevTime - 1000);
+            }, 1000);
+        } else if (!isRunning && time !== 0) {
+            clearInterval(interval);
+        }
 
+        return () => clearInterval(interval);
+    }, [isRunning, time]);
+
+    useEffect(() => {
         if (time === 0) {
             ranOut();
         }
+    }, [time, ranOut]);
 
-        return () => {
-            clearInterval(interval);
-        };
-    }, [isRunning, time, ranOut]);
-
-    return <span className={className}>{formatTime(time)}</span>;
+    return (
+        <span className={className}>
+            <Stopwatch className='w-[18px] h-[18px]' /> {formatTime(time)}
+        </span>
+    );
 }

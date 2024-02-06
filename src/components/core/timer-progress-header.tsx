@@ -24,18 +24,21 @@ export default function TimerProgressHeader({
     ranOut: () => void;
     pageLength: number;
     isRunning?: boolean;
-    className?: string;
 }) {
     return (
-        <div className={(cn(classNames?.wrapper), 'w-full')}>
+        <div
+            className={
+                (cn(classNames?.wrapper), 'w-full flex justify-center items-center h-[50px]')
+            }>
             {!isRunning && (
                 <Progress
                     value={currentPage}
                     maxValue={pageLength}
-                    minValue={1}
+                    minValue={0}
                     showValueLabel={false}
                     isStriped
-                    radius='md'
+                    radius='sm'
+                    disableAnimation
                     className={cn(classNames?.progress, 'w-full')}
                     color='warning'
                 />
