@@ -14,7 +14,6 @@ export default function QuizButtons({
     isSubmitted,
     watchAllFieldsValuesLengthIsTrue,
 }: QuizButtonsProps) {
-    console.info(isSubmitted);
     return (
         <div>
             <div

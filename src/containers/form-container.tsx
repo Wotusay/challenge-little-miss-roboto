@@ -58,7 +58,6 @@ export default function FormContainer({
     const watchAllFieldsValuesLength = watchAllFieldsValuesTrue.length;
     // If correctAnswer.length checkboxes are true set an single boolean to true
     const watchAllFieldsValuesLengthIsTrue = watchAllFieldsValuesLength === correctAnswer.length;
-    console.info(watchAllFieldsValuesLengthIsTrue);
 
     function onSubmit(data: { [key: string]: boolean | undefined }) {
         // remove all undefined values in data
