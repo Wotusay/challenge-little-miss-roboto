@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cn } from '@/utils';
+import { cn } from '@/utils/tw-merge';
 
 export default function Wrapper({
     children,

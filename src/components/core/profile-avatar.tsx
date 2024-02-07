@@ -1,7 +1,7 @@
 import { Avatar } from '@nextui-org/avatar';
 import React from 'react';
 
-import { cn } from '@/utils';
+import { cn } from '@/utils/tw-merge';
 
 export default function ProfileAvatar({ className }: { className?: string }) {
     return (

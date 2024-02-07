@@ -1,7 +1,7 @@
 import React from 'react';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 
-import { cn } from '@/utils';
+import { cn } from '@/utils/tw-merge';
 
 export type CheckboxButtonProps = {
     label: string;

@@ -1,8 +1,8 @@
 import { Progress } from '@nextui-org/progress';
 
-import { cn } from '@/utils';
+import { cn } from '@/utils/tw-merge';
 
-import Timer from '../elements/timer';
+import Timer from '../common/timer';
 
 export type TTimerProgressHeaderClassName = {
     wrapper?: string;

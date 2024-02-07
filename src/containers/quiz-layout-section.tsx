@@ -1,4 +1,4 @@
-import { TFlandersQuiz } from '@/interfaces/flanders-quiz.entity';
+import { TFlandersQuiz } from '@/interfaces/quiz/flanders-quiz.entity';
 
 import InformationSection from './information-section';
 import QuizSection from './quiz-section';

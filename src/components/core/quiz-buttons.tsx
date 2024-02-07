@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/button';
 
-import { QuizSubmit } from '@/interfaces/quiz-submit.interface';
-import { cn } from '@/utils';
+import { QuizSubmit } from '@/interfaces/quiz/quiz-submit.interface';
+import { cn } from '@/utils/tw-merge';
 
 type QuizButtonsProps = {
     proceed: () => void;

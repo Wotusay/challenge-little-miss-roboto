@@ -1,6 +1,10 @@
 import { env } from 'process';
 
-import { FlandersQuiz, FlandersQuizApi, TFlandersQuiz } from '@/interfaces/flanders-quiz.entity';
+import {
+    FlandersQuiz,
+    FlandersQuizApi,
+    TFlandersQuiz,
+} from '@/interfaces/quiz/flanders-quiz.entity';
 
 export default async function getQuizData(): Promise<TFlandersQuiz[]> {
     const url: string = env.NEXT_PUBLIC_API_URL ?? '';

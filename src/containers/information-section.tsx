@@ -1,4 +1,4 @@
-import Wrapper from '@/components/elements/wrapper';
+import Wrapper from '@/components/common/wrapper';
 
 import ProfileSection from './profile-section';
 import SettingsSection from './settings-section';

@@ -2,7 +2,7 @@ import './globals.scss';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import { cn } from '@/utils';
+import { cn } from '@/utils/tw-merge';
 
 import Providers from './providers';
 

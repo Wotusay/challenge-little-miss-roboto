@@ -1,7 +1,7 @@
 import { Divider } from '@nextui-org/divider';
 import React from 'react';
 
-import { Content } from '@/interfaces/content.interface';
+import { Content } from '@/interfaces/content/content.interface';
 
 import ProfileAvatar from './profile-avatar';
 

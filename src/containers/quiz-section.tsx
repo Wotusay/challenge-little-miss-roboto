@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 
-import ConfettiComponent from '@/components/elements/confeti';
-import Wrapper from '@/components/elements/wrapper';
-import { TFlandersQuiz } from '@/interfaces/flanders-quiz.entity';
+import ConfettiComponent from '@/components/common/confeti';
+import Wrapper from '@/components/common/wrapper';
+import { TFlandersQuiz } from '@/interfaces/quiz/flanders-quiz.entity';
 
 import FormContainer from './form-container';
 

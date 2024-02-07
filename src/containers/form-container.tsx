@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
+import CheckboxButton from '@/components/common/checkbox-button';
 import QuizButtons from '@/components/core/quiz-buttons';
 import TimerProgressHeader from '@/components/core/timer-progress-header';
-import CheckboxButton from '@/components/elements/checkbox-button';
-import { TFlandersQuiz } from '@/interfaces/flanders-quiz.entity';
-import { QuizSubmit } from '@/interfaces/quiz-submit.interface';
+import { TFlandersQuiz } from '@/interfaces/quiz/flanders-quiz.entity';
+import { QuizSubmit } from '@/interfaces/quiz/quiz-submit.interface';
 
 type FormContainerProps = {
     currentQuiz: TFlandersQuiz;
