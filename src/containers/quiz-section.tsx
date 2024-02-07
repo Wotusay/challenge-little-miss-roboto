@@ -1,12 +1,15 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 
-import ConfettiComponent from '@/components/common/confeti';
 import Wrapper from '@/components/common/wrapper';
+import useHeight from '@/hooks/useHeight';
 import { TFlandersQuiz } from '@/interfaces/quiz/flanders-quiz.entity';
 
 import FormContainer from './form-container';
+
+const ConfettiComponent = dynamic(() => import('@/components/common/confeti'));
 
 export default function QuizSection({
     currentQuiz,
@@ -21,6 +24,8 @@ export default function QuizSection({
         setIsSubmitted(allCorrect);
     }
 
+    const height = useHeight() ?? 2000;
+
     return (
         <>
             <Wrapper className='relative'>
@@ -29,7 +34,7 @@ export default function QuizSection({
                     currentQuiz={currentQuiz}
                     pageLength={pageLength}
                 />
-                {isSubmitted && <ConfettiComponent />}
+                {isSubmitted && <ConfettiComponent height={height} />}
             </Wrapper>
         </>
     );
