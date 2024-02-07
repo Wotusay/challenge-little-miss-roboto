@@ -150,10 +150,10 @@ export default function FormContainer({
                     ranOut={timeRanOut}
                     isRunning={isRunning}
                 />
-                <h2 className='font-bold max-w-[550px] self-center text-3xl'>
+                <h2 className='font-bold max-w-[610px] self-center text-3xl'>
                     {currentQuiz.question}
                 </h2>
-                <div className='grid grid-cols-[repeat(_2,_450px)] self-center gap-y-6 gap-x-8 m-auto'>
+                <div className='grid min-h-[400px] grid-cols-[repeat(_2,_450px)] self-center gap-y-6 gap-x-8 m-auto content-center'>
                     {currentQuiz.answers.map((quiz, index) => (
                         <CheckboxButton
                             key={`${quiz.answer}-${index}`}
