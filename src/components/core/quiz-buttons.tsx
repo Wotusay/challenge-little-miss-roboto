@@ -22,6 +22,7 @@ export default function QuizButtons({
                     'flex-col gap-4 self-center justify-self-center w-[400px]',
                 )}>
                 <Button
+                    aria-label='Klaar'
                     type='submit'
                     className='shadow-inset-black-25 font-bold'
                     size='lg'
@@ -32,6 +33,7 @@ export default function QuizButtons({
                     Klaar!
                 </Button>
                 <Button
+                    aria-label='Geef me een tip'
                     className='shadow-inset-black-25 font-bold'
                     size='lg'
                     radius='sm'
@@ -42,6 +44,7 @@ export default function QuizButtons({
             </div>
             <Button
                 size='lg'
+                aria-label='Doorgaan'
                 radius='sm'
                 color='primary'
                 variant='solid'

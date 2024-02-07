@@ -33,7 +33,7 @@ export default function CheckboxButton({
           : 'peer-checked:bg-divider peer-checked:border-primary peer-checked:text-white peer-disabled:opacity-75';
 
     return (
-        <label className='w-full h-full'>
+        <label aria-label={label} className='w-full h-full'>
             <Controller
                 name={label}
                 control={control}
@@ -42,6 +42,7 @@ export default function CheckboxButton({
                     <input
                         checked={field.value}
                         className='hidden peer'
+                        aria-hidden='true'
                         type='checkbox'
                         {...field}
                     />

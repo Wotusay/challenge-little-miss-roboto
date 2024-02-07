@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
+import useCountdownTimer from '@/hooks/useCountdownTimer';
 
 import { Stopwatch } from '../icons/icons';
 
@@ -13,7 +15,7 @@ export default function Timer({
     ranOut: () => void;
     className?: string;
 }) {
-    const [time, setTime] = useState(timeInMs);
+    const time = useCountdownTimer(timeInMs, isRunning, ranOut);
 
     const formatTime = (time: number) => {
         const minutes = Math.floor(time / 60000);
@@ -21,26 +23,6 @@ export default function Timer({
 
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
-
-    useEffect(() => {
-        let interval: any = null;
-
-        if (isRunning) {
-            interval = setInterval(() => {
-                setTime((prevTime) => prevTime - 1000);
-            }, 1000);
-        } else if (!isRunning && time !== 0) {
-            clearInterval(interval);
-        }
-
-        return () => clearInterval(interval);
-    }, [isRunning, time]);
-
-    useEffect(() => {
-        if (time === 0) {
-            ranOut();
-        }
-    }, [time, ranOut]);
 
     return (
         <span className={className}>

@@ -8,6 +8,7 @@ export default function SettingsSection() {
         <div className='flex justify-between h-full w-full flex-wrap 2xl:flex-nowrap gap-y-4'>
             {settings.map((Setting, index) => (
                 <Button
+                    aria-label='Settings knop'
                     className='shadow-inset-black-25 h-full max-h-[50px]'
                     key={index}
                     radius='sm'
@@ -17,6 +18,7 @@ export default function SettingsSection() {
                 </Button>
             ))}
             <Button
+                aria-label='Naar de kaartknop'
                 color='primary'
                 className='font-bold shadow-inset-black-25 w-full 2xl:w-auto'
                 variant='solid'

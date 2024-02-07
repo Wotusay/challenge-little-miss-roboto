@@ -32,6 +32,7 @@ export default function TimerProgressHeader({
             }>
             {!isRunning && (
                 <Progress
+                    aria-label={`Progressie van de quiz stap ${currentPage} - ${pageLength}`}
                     value={currentPage}
                     maxValue={pageLength}
                     minValue={0}
