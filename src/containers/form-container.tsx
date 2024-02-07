@@ -43,7 +43,6 @@ export default function FormContainer({
         handleSubmit,
         watch,
         setValue,
-        reset,
         formState: { isDirty },
     } = useForm({ mode: 'onChange', defaultValues });
 
@@ -59,6 +58,7 @@ export default function FormContainer({
     const watchAllFieldsValuesLength = watchAllFieldsValuesTrue.length;
     // If correctAnswer.length checkboxes are true set an single boolean to true
     const watchAllFieldsValuesLengthIsTrue = watchAllFieldsValuesLength === correctAnswer.length;
+    console.info(watchAllFieldsValuesLengthIsTrue);
 
     function onSubmit(data: { [key: string]: boolean | undefined }) {
         // remove all undefined values in data
@@ -67,6 +67,16 @@ export default function FormContainer({
         );
 
         // get the keys of the filteredData
+        checkData(filteredData, false);
+    }
+
+    function checkData(
+        filteredData: { [key: string]: boolean | undefined },
+        setAllCorrect: boolean | undefined = false,
+    ) {
+        if (setAllCorrect)
+            return setIsSubmitted(() => ({ allCorrect: setAllCorrect, submitted: true }));
+
         const keys = Object.keys(filteredData);
         // Check if the key is in the correctAnswer array
         keys.forEach((key) => {
@@ -82,6 +92,7 @@ export default function FormContainer({
         const allCorrect = keys.every((key) =>
             correctAnswer.map((answer) => answer.answer).includes(key),
         );
+
         isAllCorrect(allCorrect);
         setIsSubmitted(() => ({ allCorrect, submitted: true }));
     }
@@ -103,15 +114,18 @@ export default function FormContainer({
 
     function timeRanOut() {
         setIsRunning(false);
-        // Reset form
-        reset();
-        // set the value of the checkboxes to true if the answer is correct
         currentQuiz.answers.forEach((answer) => {
             if (answer.correct) {
                 setValue(answer.answer, true);
+            } else {
+                setValue(answer.answer, false);
+            }
+
+            if (!beenPicked.includes(answer.answer)) {
+                setBeenPicked((array) => [...array, answer.answer]);
             }
         });
-        handleSubmit(onSubmit)();
+        checkData({}, true);
     }
 
     useEffect(() => {
